@@ -2,7 +2,12 @@ from typing import Optional
 import uvicorn
 from fastapi import FastAPI, HTTPException
 
-from .sentence import Sentence
+import sys
+import os
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
+from scripts.sentence import Sentence
 
 app = FastAPI()
 
