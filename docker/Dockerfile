@@ -7,4 +7,4 @@ RUN pip install -r /requirements.txt
 
 WORKDIR /work
 
-ENTRYPOINT [ "/bin/bash" ]
+# ENTRYPOINT [ "/bin/bash" ]
