@@ -21,6 +21,14 @@ export PYTHON=python3
 run-server: ## Run API Server
 	docker run -it --rm -v $(PWD):/work -p $(HOST_PORT):$(CONTAINER_PORT) --name $(CONTAINER_NAME) $(IMAGE_NAME) $(PYTHON) /work/scripts/main.py --port $(CONTAINER_PORT)
 
+.PHONY: run-test
+run-test: ## Run test script
+	docker run -it --rm -v $(PWD):/work -p $(HOST_PORT):$(CONTAINER_PORT) --name $(CONTAINER_NAME) $(IMAGE_NAME) pytest /work/tests/test_main.py
+
+.PHONY: run-lint
+run-lint: ## Run linter (black)
+	@docker run -v ${PWD}:/work --rm $(IMAGE_NAME) black .
+
 ###########################################################################################################
 ## general targets
 ###########################################################################################################
