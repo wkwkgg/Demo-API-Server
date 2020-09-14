@@ -9,7 +9,17 @@ export PROJECT_NAME=demo_api_server
 export IMAGE_NAME=$(PROJECT_NAME)-image
 export CONTAINER_NAME=$(PROJECT_NAME)-container
 export DOCKERFILE=./docker/Dockerfile
+export HOST_PORT=8000
+export CONTAINER_PORT=8000
+export PYTHON=python3
 
+###########################################################################################################
+##  main targets
+###########################################################################################################
+
+.PHONY: run-server
+run-server: ## Run API Server
+	docker run -it --rm -v $(PWD):/work -p $(HOST_PORT):$(CONTAINER_PORT) --name $(CONTAINER_NAME) $(IMAGE_NAME) $(PYTHON) /work/scripts/main.py --port $(CONTAINER_PORT)
 
 ###########################################################################################################
 ## general targets
