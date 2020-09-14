@@ -2,9 +2,10 @@ from typing import Optional
 import uvicorn
 from fastapi import FastAPI, HTTPException
 
-from sentence import Sentence
+from .sentence import Sentence
 
 app = FastAPI()
+
 
 @app.get("/correct/{lang}")
 async def correct(lang: str, params: str, output: Optional[str] = None):
@@ -15,6 +16,6 @@ async def correct(lang: str, params: str, output: Optional[str] = None):
 
     return {"lang": sent.lang, "input": params, "output": sent.correct()}
 
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
-

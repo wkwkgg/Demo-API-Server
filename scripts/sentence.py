@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 class Sentence:
     def __init__(self, lang: str, input: str, output: Optional[str] = None):
         self.lang = lang
